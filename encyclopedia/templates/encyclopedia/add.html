@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+ 
+{% block title %}
+    Encyclopedia
+{% endblock %}
+ 
+{% block body %}
+    <p>Create a new Wiki page</p>             
+    <form action="/Add" method="post">
+    {% csrf_token %}
+        <input type="text" name="title" placeholder="Enter Title" required>
+        <br>
+        <br>
+        <textarea name="content" placeholder="Enter content with title first in Markdown language" required></textarea>
+        <br>
+        <br>
+        <input type="submit" id="create" value="Create New Entry" />
+    </form>
+    {% for message in messages %}
+        <div class="alert alert-success">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endblock %}

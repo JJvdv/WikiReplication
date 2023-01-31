@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    search results
+{% endblock %}
+
+{% block body %}
+    {% for result in content %}
+        {% if result %}
+            <li><a href="wiki/{{ result }}">{{ result | safe }}</a></li>
+            
+        {% else %}
+        {{ result | safe}}
+        {% endif %}
+    {% endfor %}        
+{% endblock %}
